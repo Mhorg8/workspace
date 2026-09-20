@@ -1,5 +1,5 @@
 import { ToolSkin } from "@/components/tool-skin"
 
-export default function FormaterLayout({ children }: LayoutProps<"/formater">) {
+export default function JsonTypesLayout({ children }: LayoutProps<"/json-types">) {
   return <ToolSkin>{children}</ToolSkin>
 }

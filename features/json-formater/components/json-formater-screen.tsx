@@ -1,7 +1,7 @@
 import { AlignLeft, Braces, CheckCircle2, ShieldCheck } from "lucide-react"
-import Link from "next/link"
 
 import Blobs from "@/components/blobs"
+import { ToolHeader } from "@/components/tool-header"
 
 import { JsonFormater } from "./json-formater"
 
@@ -44,23 +44,7 @@ export function JsonFormaterScreen() {
 
       <Blobs />
 
-      <header className="sticky top-0 z-40 border-b border-border/80 bg-background/75 backdrop-blur-xl">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-          <Link
-            href="/json-formater"
-            className="flex min-h-11 items-center gap-2.5 rounded-full outline-none focus-visible:ring-3 focus-visible:ring-ring/40"
-          >
-            <span className="relative flex size-9 items-center justify-center">
-              <span className="absolute size-6 rounded-full bg-primary" />
-              <span className="absolute left-3 size-6 rounded-full bg-accent/90" />
-            </span>
-            <span className="font-heading text-lg font-semibold tracking-tight">JSON Formater</span>
-          </Link>
-          <p className="hidden text-sm font-medium text-muted-foreground sm:block">
-            JSON · Pretty print
-          </p>
-        </div>
-      </header>
+      <ToolHeader />
 
       <main className="mx-auto flex min-h-dvh w-full max-w-6xl flex-col gap-10 px-4 py-8 sm:px-6 sm:py-12 lg:gap-14">
         <section className="max-w-3xl">
