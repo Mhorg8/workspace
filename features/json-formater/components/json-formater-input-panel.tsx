@@ -28,10 +28,7 @@ export function JsonFormaterInputPanel({
   onJsonChange,
 }: JsonFormaterInputPanelProps) {
   return (
-    <section
-      id="json-formater"
-      className="relative overflow-hidden rounded-[2rem] bg-card p-5 shadow-lg ring-1 ring-foreground/5 sm:p-8 lg:col-span-8"
-    >
+    <section id="json-formater" className="input-panel-wrapper">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -right-16 -top-20 size-56 rounded-full bg-[#fb7185]/30 blur-3xl"

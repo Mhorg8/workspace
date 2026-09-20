@@ -1,6 +1,6 @@
 "use client"
 
-import { AlignLeft, Braces, ImageIcon } from "lucide-react"
+import { AlignLeft, Braces, ImageIcon, Palette } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import type { LucideIcon } from "lucide-react"
@@ -43,6 +43,12 @@ const imageLinks: ToolLink[] = [
     title: "PNG & SVG to WebP",
     description: "Convert images to lightweight WebP.",
     icon: ImageIcon,
+  },
+  {
+    href: "/css-gradiant",
+    title: "CSS Gradient",
+    description: "Mix hex stops and copy a CSS background value.",
+    icon: Palette,
   },
 ]
 
@@ -101,7 +107,7 @@ export function ToolHeader() {
               <NavigationMenuTrigger
                 className={cn("h-11", isActiveGroup(formatLinks, pathname) && "bg-muted")}
               >
-                Format
+                Developer Tools
               </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <MenuLinks links={formatLinks} pathname={pathname} />
@@ -111,7 +117,7 @@ export function ToolHeader() {
               <NavigationMenuTrigger
                 className={cn("h-11", isActiveGroup(imageLinks, pathname) && "bg-muted")}
               >
-                Images
+                Designer Tools
               </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <MenuLinks links={imageLinks} pathname={pathname} />
