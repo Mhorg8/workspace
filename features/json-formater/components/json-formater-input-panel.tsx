@@ -2,14 +2,14 @@
 
 import { cn } from "@/lib/utils"
 
-type JsonInputPanelProps = {
+type JsonFormaterInputPanelProps = {
   inputId: string
   json: string
   hasError: boolean
   onJsonChange: (json: string) => void
 }
 
-export function FormatChip({ label, tone }: { label: string; tone: "rose" | "blue" | "violet" }) {
+function FormatChip({ label, tone }: { label: string; tone: "rose" | "blue" | "violet" }) {
   const tones = {
     rose: "bg-[#ffe4e6] text-[#9f1239]",
     blue: "bg-[#dbeafe] text-[#1e3a8a]",
@@ -21,10 +21,15 @@ export function FormatChip({ label, tone }: { label: string; tone: "rose" | "blu
   )
 }
 
-export function JsonInputPanel({ inputId, json, hasError, onJsonChange }: JsonInputPanelProps) {
+export function JsonFormaterInputPanel({
+  inputId,
+  json,
+  hasError,
+  onJsonChange,
+}: JsonFormaterInputPanelProps) {
   return (
     <section
-      id="json-converter"
+      id="json-formater"
       className="relative overflow-hidden rounded-[2rem] bg-card p-5 shadow-lg ring-1 ring-foreground/5 sm:p-8 lg:col-span-8"
     >
       <div
@@ -41,13 +46,13 @@ export function JsonInputPanel({ inputId, json, hasError, onJsonChange }: JsonIn
           <div>
             <p className="text-sm font-medium text-primary">JSON input</p>
             <h2 className="font-heading text-2xl font-semibold tracking-tight">
-              JSON in. TypeScript out.
+              Messy JSON in. Clean JSON out.
             </h2>
           </div>
           <div className="flex flex-wrap gap-2">
             <FormatChip label="JSON" tone="rose" />
-            <FormatChip label="TypeScript" tone="blue" />
-            <FormatChip label="Types" tone="violet" />
+            <FormatChip label="Pretty" tone="blue" />
+            <FormatChip label="Valid" tone="violet" />
           </div>
         </div>
 
@@ -60,7 +65,7 @@ export function JsonInputPanel({ inputId, json, hasError, onJsonChange }: JsonIn
           aria-invalid={hasError}
           aria-describedby={hasError ? `${inputId}-error` : `${inputId}-help`}
           onChange={(event) => onJsonChange(event.target.value)}
-          placeholder='{ "name": "Ada", "age": 36 }'
+          placeholder='{"name":"Ada","age":36}'
           className={cn(
             "min-h-56 w-full resize-y rounded-[1.6rem] border-2 bg-background/80 p-5 font-mono text-sm leading-6 outline-none transition-all duration-200",
             "touch-manipulation focus-visible:ring-3 focus-visible:ring-ring/40",
@@ -70,7 +75,7 @@ export function JsonInputPanel({ inputId, json, hasError, onJsonChange }: JsonIn
           )}
         />
         <p id={`${inputId}-help`} className="text-sm leading-6 text-muted-foreground">
-          Paste an object or array. Nested keys and mixed arrays are inferred for you.
+          Paste minified or messy JSON. The formatter parses it and prints the exact value.
         </p>
       </div>
     </section>

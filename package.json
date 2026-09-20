@@ -9,7 +9,7 @@
     "lint": "eslint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "node --import tsx --test features/image-converter/tests/*.test.ts features/json-to-typescript/tests/*.test.ts"
+    "test": "node --import tsx --test features/image-converter/tests/*.test.ts features/json-to-typescript/tests/*.test.ts features/json-formater/tests/*.test.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
