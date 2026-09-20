@@ -129,7 +129,7 @@
   }
 }
 
-.convert-skin {
+.tool-skin {
   --background: #fff1f2;
   --foreground: #881337;
   --card: #ffffff;
@@ -152,14 +152,14 @@
   font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
-.convert-skin h1,
-.convert-skin h2,
-.convert-skin h3,
-.convert-skin .font-heading {
+.tool-skin h1,
+.tool-skin h2,
+.tool-skin h3,
+.tool-skin .font-heading {
   font-family: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
 }
 
-.convert-skin .quality-slider {
+.tool-skin .quality-slider {
   appearance: none;
   height: 2.75rem;
   cursor: pointer;
@@ -167,13 +167,13 @@
   touch-action: manipulation;
 }
 
-.convert-skin .quality-slider::-webkit-slider-runnable-track {
+.tool-skin .quality-slider::-webkit-slider-runnable-track {
   height: 0.5rem;
   border-radius: 999px;
   background: linear-gradient(90deg, #fb7185 0%, #e11d48 48%, #2563eb 100%);
 }
 
-.convert-skin .quality-slider::-webkit-slider-thumb {
+.tool-skin .quality-slider::-webkit-slider-thumb {
   appearance: none;
   width: 1.5rem;
   height: 1.5rem;
@@ -184,13 +184,13 @@
   box-shadow: 0 4px 12px rgb(225 29 72 / 28%);
 }
 
-.convert-skin .quality-slider::-moz-range-track {
+.tool-skin .quality-slider::-moz-range-track {
   height: 0.5rem;
   border-radius: 999px;
   background: linear-gradient(90deg, #fb7185 0%, #e11d48 48%, #2563eb 100%);
 }
 
-.convert-skin .quality-slider::-moz-range-thumb {
+.tool-skin .quality-slider::-moz-range-thumb {
   width: 1.5rem;
   height: 1.5rem;
   border: 3px solid #e11d48;
@@ -206,19 +206,19 @@
   }
   50% {
     transform: translate3d(12px, -22px, 0) scale(1.06);
-  }
+  } 
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .convert-skin .blob-float-a {
+  .tool-skin .blob-float-a {
     animation: chroma-float 14s ease-in-out infinite;
   }
 
-  .convert-skin .blob-float-b {
+  .tool-skin .blob-float-b {
     animation: chroma-float 18s ease-in-out infinite reverse;
   }
 
-  .convert-skin .blob-float-c {
+  .tool-skin .blob-float-c {
     animation: chroma-float 16s ease-in-out infinite;
     animation-delay: -6s;
   }

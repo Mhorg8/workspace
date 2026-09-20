@@ -1,5 +1,5 @@
 import { ToolSkin } from "@/components/tool-skin"
 
-export default function ConvertLayout({ children }: LayoutProps<"/convert">) {
+export default function FormaterLayout({ children }: LayoutProps<"/formater">) {
   return <ToolSkin>{children}</ToolSkin>
 }
