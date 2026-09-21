@@ -1,6 +1,15 @@
 "use client"
 
-import { AlignLeft, Braces, ImageIcon, Palette } from "lucide-react"
+import {
+  AlignLeft,
+  Braces,
+  FileImage,
+  Image,
+  ImageIcon,
+  PaintBucket,
+  Palette,
+  Transgender,
+} from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import type { LucideIcon } from "lucide-react"
@@ -42,13 +51,19 @@ const imageLinks: ToolLink[] = [
     href: "/convert",
     title: "PNG & SVG to WebP",
     description: "Convert images to lightweight WebP.",
-    icon: ImageIcon,
+    icon: FileImage,
   },
   {
     href: "/css-gradiant",
     title: "CSS Gradient",
     description: "Mix hex stops and copy a CSS background value.",
     icon: Palette,
+  },
+  {
+    href: "/image-gradient",
+    title: "Image Gradients",
+    description: "Generate a CSS gradient from a photo.",
+    icon: PaintBucket,
   },
 ]
 
