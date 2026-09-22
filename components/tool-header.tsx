@@ -3,6 +3,7 @@
 import {
   AlignLeft,
   Braces,
+  Calendar,
   FileImage,
   Image,
   ImageIcon,
@@ -67,6 +68,15 @@ const imageLinks: ToolLink[] = [
   },
 ]
 
+const planerLinks: ToolLink[] = [
+  {
+    href: "/plan",
+    title: "Plan",
+    description: "Plan your project.",
+    icon: Calendar,
+  },
+]
+
 function MenuLinks({ links, pathname }: { links: ToolLink[]; pathname: string }) {
   return (
     <ul className="grid w-72 gap-1">
@@ -118,6 +128,16 @@ export function ToolHeader() {
 
         <NavigationMenu align="end" className="max-w-none flex-none">
           <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger
+                className={cn("h-11", isActiveGroup(imageLinks, pathname) && "bg-muted")}
+              >
+                Plan Tools
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <MenuLinks links={planerLinks} pathname={pathname} />
+              </NavigationMenuContent>
+            </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuTrigger
                 className={cn("h-11", isActiveGroup(formatLinks, pathname) && "bg-muted")}
