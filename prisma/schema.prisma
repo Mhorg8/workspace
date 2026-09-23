@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// One plan for a calendar day.
+model Plan {
+  id        BigInt     @id @default(autoincrement())
+  day       DateTime   @db.Date
+  title     String
+  createdAt DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime   @updatedAt @map("updated_at") @db.Timestamptz(6)
+  items     PlanItem[]
+
+  @@unique([day])
+  @@map("plans")
+}
+
+/// A single piece of work on a plan, ordered within that day.
+model PlanItem {
+  id        BigInt   @id @default(autoincrement())
+  planId    BigInt   @map("plan_id")
+  title     String
+  notes     String?
+  done      Boolean  @default(false)
+  sortOrder Int      @default(0) @map("sort_order")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+  plan      Plan     @relation(fields: [planId], references: [id], onDelete: Cascade)
+
+  @@index([planId, sortOrder])
+  @@map("plan_items")
+}
