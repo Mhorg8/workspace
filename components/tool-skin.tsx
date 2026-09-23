@@ -17,15 +17,11 @@ type ToolSkinProps = {
   children: ReactNode
 }
 
+export const toolSkinClassName = cn("tool-skin", spaceGrotesk.variable, dmSans.variable)
+
 export function ToolSkin({ children }: ToolSkinProps) {
   return (
-    <div
-      className={cn(
-        "tool-skin min-h-dvh bg-background text-foreground",
-        spaceGrotesk.variable,
-        dmSans.variable,
-      )}
-    >
+    <div className={cn(toolSkinClassName, "min-h-dvh bg-background text-foreground")}>
       {children}
     </div>
   )
