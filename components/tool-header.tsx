@@ -66,6 +66,12 @@ const imageLinks: ToolLink[] = [
     description: "Generate a CSS gradient from a photo.",
     icon: PaintBucket,
   },
+  {
+    href: "/color-convertor",
+    title: "Color Convertor",
+    description: "Convert colors between different formats.",
+    icon: Palette,
+  },
 ]
 
 const planerLinks: ToolLink[] = [
