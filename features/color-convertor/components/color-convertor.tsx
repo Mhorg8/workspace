@@ -1,44 +1,34 @@
 "use client"
 
-import { ArrowDown, ArrowRight, Pipette } from "lucide-react"
-import { useId, useState } from "react"
+import { ArrowDown, ArrowRight } from "lucide-react"
+import { useId } from "react"
 
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { cn } from "@/lib/utils"
 
-import ColorConvertorFormat, { FORMAT_OPTIONS } from "./color-convertor-format"
+import ColorConvertorFormat from "./color-convertor-format"
 import ColorConvertorSession from "./color-convertor-session"
 import ColorPreview from "./color-preview"
+import { FORMAT_OPTIONS } from "../constants"
+import { useColorConvertor } from "../hooks/use-color-convertor"
+import FormatChip from "./color-format-chip"
 
-export type ColorFormat = "hex" | "rgb" | "hsl" | "oklch"
 
-function FormatChip({ label, tone }: { label: string; tone: "rose" | "blue" | "violet" }) {
-    const tones = {
-        rose: "bg-[#ffe4e6] text-[#9f1239]",
-        blue: "bg-[#dbeafe] text-[#1e3a8a]",
-        violet: "bg-[#ede9fe] text-[#5b21b6]",
-    }
-
-    return (
-        <span className={cn("rounded-full px-3 py-1 text-xs font-semibold", tones[tone])}>{label}</span>
-    )
-}
-
-const DEFAULT_COLOR = "#2563eb"
 
 const ColorConvertor = () => {
     const sourceId = useId()
     const outputId = useId()
     const formatId = useId()
-    const [targetFormat, setTargetFormat] = useState<ColorFormat>("hex")
-    const [sourceColor, setSourceColor] = useState(DEFAULT_COLOR)
 
-    const selected = FORMAT_OPTIONS.find((option) => option.value === targetFormat) ?? FORMAT_OPTIONS[0]
+    const { sourceColor, setSourceColor, targetFormat, sourceFormat, setTargetFormat, convertedColor } = useColorConvertor()
+
+    const selected = FORMAT_OPTIONS.find((option) => option.value === sourceFormat) ?? FORMAT_OPTIONS[0]
+
 
     return (
         <div id="color-convertor" className="grid gap-5 md:grid-cols-12 md:items-start">
             <section className="input-panel-wrapper col-span-12 flex min-h-128 flex-col md:col-span-8 md:min-h-144">
+                {/* blobs */}
                 <div
                     aria-hidden="true"
                     className="pointer-events-none absolute -right-16 -top-20 size-56 rounded-full bg-[#fb7185]/30 blur-3xl"
@@ -76,14 +66,6 @@ const ColorConvertor = () => {
                             <Label htmlFor={sourceId}>Source color</Label>
                             <div className="flex items-center gap-2">
                                 <Input
-                                    id={`${sourceId}-swatch`}
-                                    type="color"
-                                    value={sourceColor}
-                                    aria-label="Pick a source color"
-                                    className="h-12 w-14 shrink-0 cursor-pointer rounded-2xl border border-border p-1.5"
-                                    onChange={(event) => setSourceColor(event.target.value)}
-                                />
-                                <Input
                                     id={sourceId}
                                     type="text"
                                     value={sourceColor}
@@ -113,6 +95,7 @@ const ColorConvertor = () => {
                                 id={outputId}
                                 type="text"
                                 readOnly
+                                value={convertedColor}
                                 placeholder={selected.hint}
                                 className="h-12 bg-muted/40 font-mono text-sm"
                             />

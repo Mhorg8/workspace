@@ -1,22 +1,8 @@
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { cn } from '@/lib/utils'
-import React from 'react'
-import { ColorFormat } from './color-convertor'
-
-export type ColorFormatOption = {
-    value: ColorFormat
-    label: string
-    hint: string
-}
-
-export const FORMAT_OPTIONS: ColorFormatOption[] = [
-    { value: "hex", label: "HEX", hint: "#RRGGBB" },
-    { value: "rgb", label: "RGB", hint: "rgb(r, g, b)" },
-    { value: "hsl", label: "HSL", hint: "hsl(h, s%, l%)" },
-    { value: "oklch", label: "OKLCH", hint: "oklch(l c h)" },
-]
-
+import { ColorFormat } from '../types'
+import { FORMAT_OPTIONS } from '../constants'
 interface ColorConvertorFormatProps {
     targetFormat: ColorFormat
     setTargetFormat: (format: ColorFormat) => void
