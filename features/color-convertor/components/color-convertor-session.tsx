@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Copy } from 'lucide-react'
-import { ColorFormatOption } from './color-convertor-format'
+import { ColorFormatOption } from '../types'
 
 interface Props {
   selected: ColorFormatOption

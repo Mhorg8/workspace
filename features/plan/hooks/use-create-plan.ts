@@ -20,6 +20,7 @@ export const useCreatePlan = ({ onCreated }: UseCreatePlanOptions = {}) => {
     defaultValues: {
       day: startOfLocalDay(new Date()),
       title: "",
+      description: "",
     },
     resolver: zodResolver(createPlanSchema),
   })
@@ -28,8 +29,12 @@ export const useCreatePlan = ({ onCreated }: UseCreatePlanOptions = {}) => {
     setSubmitError(null)
     setSavedTitle(null)
 
+    const title = data.title.trim()
+    const description = data.description.trim()
+
     const result = await createPlanAction({
-      title: data.title,
+      title,
+      description: description || undefined,
       day: toCalendarDate(data.day),
     })
 
@@ -38,10 +43,11 @@ export const useCreatePlan = ({ onCreated }: UseCreatePlanOptions = {}) => {
       return
     }
 
-    setSavedTitle(data.title)
+    setSavedTitle(title)
     onCreated?.()
     form.reset({
       title: "",
+      description: "",
       day: startOfLocalDay(new Date()),
     })
   }

@@ -8,6 +8,7 @@ import { createPlan } from "./plan.repository"
 
 type CreatePlanActionInput = {
   title: string
+  description?: string
   day: string
 }
 
@@ -22,7 +23,8 @@ export async function createPlanAction(
   }
 
   const parsed = createPlanSchema.safeParse({
-    title: input.title,
+    title: input.title.trim(),
+    description: (input.description ?? "").trim(),
     day: new Date(day.getUTCFullYear(), day.getUTCMonth(), day.getUTCDate()),
   })
 
@@ -34,6 +36,7 @@ export async function createPlanAction(
   try {
     await createPlan({
       title: parsed.data.title,
+      description: parsed.data.description || undefined,
       day,
     })
     return { ok: true }

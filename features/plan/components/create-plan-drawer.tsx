@@ -1,6 +1,7 @@
 "use client"
 
 import { CalendarIcon } from "lucide-react"
+import { useState } from "react"
 import { Controller } from "react-hook-form"
 
 import ResponsiveDialog from "@/components/responsive-dialog"
@@ -9,32 +10,54 @@ import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { cn } from "@/lib/utils"
 
 import { useCreatePlan } from "../hooks/use-create-plan"
 import { startOfLocalDay } from "../utils/plan-day"
+import DayCalender from "./day-calender"
+import GetPlanInformation from "./get-plan-information"
 
-const dayFormatter = new Intl.DateTimeFormat(undefined, {
-  weekday: "long",
-  month: "long",
-  day: "numeric",
-})
 
 type CreatePlanDrawerProps = {
   hasPlans?: boolean
   onCreated?: () => void
 }
 
+type Step = 1 | 2
+
 const CreatePlanDrawer = ({ hasPlans = false, onCreated }: CreatePlanDrawerProps) => {
-  const { form, onSubmit, submitError, savedTitle } = useCreatePlan({ onCreated })
+  const [open, setOpen] = useState(false)
+  const [step, setStep] = useState<Step>(1)
+  const { form, onSubmit, submitError, savedTitle } = useCreatePlan({
+    onCreated: () => {
+      setStep(1)
+      onCreated?.()
+    },
+  })
   const {
     register,
     control,
     handleSubmit,
+    trigger,
     formState: { errors, isSubmitting },
   } = form
 
+  function handleOpenChange(nextOpen: boolean) {
+    setOpen(nextOpen)
+    if (!nextOpen) {
+      setStep(1)
+    }
+  }
+
+  async function goToDateStep() {
+    const valid = await trigger(["title", "description"])
+    if (valid) {
+      setStep(2)
+    }
+  }
+
   return (
-    <ResponsiveDialog.Root>
+    <ResponsiveDialog.Root open={open} onOpenChange={handleOpenChange}>
       <ResponsiveDialog.Trigger
         render={<Button variant="default" className="mt-4 h-11 min-h-11 cursor-pointer px-4" />}
       >
@@ -42,76 +65,37 @@ const CreatePlanDrawer = ({ hasPlans = false, onCreated }: CreatePlanDrawerProps
       </ResponsiveDialog.Trigger>
       <ResponsiveDialog.Content className={toolSkinClassName}>
         <ResponsiveDialog.Header>
-          <ResponsiveDialog.Title>Create a plan</ResponsiveDialog.Title>
+          <ResponsiveDialog.Title>
+            {step === 1 ? "Name your plan" : "Choose a day"}
+          </ResponsiveDialog.Title>
           <ResponsiveDialog.Description>
-            Name the work, then choose today or a later day.
+            {step === 1
+              ? "Add a title and optional description first."
+              : "Pick today or a later day for this plan."}
           </ResponsiveDialog.Description>
+          <p className="text-sm leading-5 text-muted-foreground" aria-live="polite">
+            Step {step} of 2
+          </p>
         </ResponsiveDialog.Header>
 
         <form
           className="flex flex-col gap-5 px-4 md:px-0"
           noValidate
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <div className="flex flex-col gap-2">
-            <Label htmlFor="plan-title">
-              Title <span className="font-normal text-muted-foreground">(required)</span>
-            </Label>
-            <Input
-              id="plan-title"
-              className="h-11 min-h-11 text-base"
-              autoComplete="off"
-              aria-invalid={errors.title ? true : undefined}
-              aria-describedby={errors.title ? "plan-title-error" : "plan-title-hint"}
-              {...register("title")}
-            />
-            <p id="plan-title-hint" className="text-sm leading-5 text-muted-foreground">
-              A short name for what you want to finish.
-            </p>
-            {errors.title?.message ? (
-              <p id="plan-title-error" role="alert" className="text-sm leading-5 text-destructive">
-                {errors.title.message}
-              </p>
-            ) : null}
-          </div>
+          onSubmit={(event) => {
+            if (step !== 2) {
+              event.preventDefault()
+              void goToDateStep()
+              return
+            }
 
-          <div className="flex flex-col gap-2">
-            <p id="plan-day-label" className="text-sm leading-none font-medium">
-              Day <span className="font-normal text-muted-foreground">(required)</span>
-            </p>
-            <Controller
-              control={control}
-              name="day"
-              render={({ field }) => (
-                <div role="group" aria-labelledby="plan-day-label">
-                  <p className="mb-2 flex items-center gap-2 text-sm leading-5 text-foreground">
-                    <CalendarIcon className="size-4 shrink-0" aria-hidden="true" />
-                    <span>{dayFormatter.format(field.value)}</span>
-                  </p>
-                  <Calendar
-                    mode="single"
-                    required
-                    selected={field.value}
-                    onSelect={(day) => {
-                      if (day) {
-                        field.onChange(startOfLocalDay(day))
-                      }
-                    }}
-                    disabled={{ before: startOfLocalDay(new Date()) }}
-                    className="w-full rounded-3xl bg-card p-2 ring-1 ring-foreground/5 [--cell-size:2.75rem]"
-                  />
-                </div>
-              )}
-            />
-            <p id="plan-day-hint" className="text-sm leading-5 text-muted-foreground">
-              Past days stay unavailable.
-            </p>
-            {errors.day?.message ? (
-              <p id="plan-day-error" role="alert" className="text-sm leading-5 text-destructive">
-                {errors.day.message}
-              </p>
-            ) : null}
-          </div>
+            void handleSubmit(onSubmit)(event)
+          }}
+        >
+          {step === 1 ? (
+            <GetPlanInformation control={control} errors={errors} register={register} />
+          ) : (
+            <DayCalender control={control} errors={errors} />
+          )}
 
           {savedTitle ? (
             <p role="status" className="text-sm leading-5 text-foreground">
@@ -125,14 +109,38 @@ const CreatePlanDrawer = ({ hasPlans = false, onCreated }: CreatePlanDrawerProps
           ) : null}
 
           <ResponsiveDialog.Footer className="px-0">
-            <ResponsiveDialog.Close
-              render={<Button type="button" variant="outline" className="h-11 min-h-11 cursor-pointer" />}
-            >
-              Close
-            </ResponsiveDialog.Close>
-            <Button type="submit" className="h-11 min-h-11 cursor-pointer" disabled={isSubmitting}>
-              {isSubmitting ? "Creating…" : "Create plan"}
-            </Button>
+            {step === 1 ? (
+              <>
+                <ResponsiveDialog.Close
+                  render={
+                    <Button type="button" variant="outline" className="h-11 min-h-11 cursor-pointer" />
+                  }
+                >
+                  Close
+                </ResponsiveDialog.Close>
+                <Button
+                  type="button"
+                  className="h-11 min-h-11 cursor-pointer"
+                  onClick={() => void goToDateStep()}
+                >
+                  Continue
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="h-11 min-h-11 cursor-pointer"
+                  onClick={() => setStep(1)}
+                >
+                  Back
+                </Button>
+                <Button type="submit" className="h-11 min-h-11 cursor-pointer" disabled={isSubmitting}>
+                  {isSubmitting ? "Creating…" : "Create plan"}
+                </Button>
+              </>
+            )}
           </ResponsiveDialog.Footer>
         </form>
       </ResponsiveDialog.Content>
