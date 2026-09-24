@@ -9,12 +9,13 @@ datasource db {
 
 /// One plan for a calendar day.
 model Plan {
-  id        BigInt     @id @default(autoincrement())
-  day       DateTime   @db.Date
-  title     String
-  createdAt DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
-  updatedAt DateTime   @updatedAt @map("updated_at") @db.Timestamptz(6)
-  items     PlanItem[]
+  id          BigInt     @id @default(autoincrement())
+  day         DateTime   @db.Date
+  title       String
+  description String?
+  createdAt   DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime   @updatedAt @map("updated_at") @db.Timestamptz(6)
+  items       PlanItem[]
 
   @@unique([day])
   @@map("plans")
