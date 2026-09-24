@@ -92,7 +92,7 @@ const CreatePlanDrawer = ({ hasPlans = false, onCreated }: CreatePlanDrawerProps
           }}
         >
           {step === 1 ? (
-            <GetPlanInformation control={control} errors={errors} register={register} />
+            <GetPlanInformation errors={errors} register={register} />
           ) : (
             <DayCalender control={control} errors={errors} />
           )}
