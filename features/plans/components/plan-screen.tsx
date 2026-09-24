@@ -5,7 +5,7 @@ import CreatePlanDrawer from "./create-plan-drawer"
 import { PlanList } from "./plan-list"
 import { usePlans } from "../hooks/use-plans"
 
-const PlanScreen = () => {
+const PlansScreen = () => {
   const { plans, status, error, refresh } = usePlans()
 
   return (
@@ -43,4 +43,4 @@ const PlanScreen = () => {
   )
 }
 
-export default PlanScreen
+export default PlansScreen

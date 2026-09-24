@@ -1,4 +1,4 @@
-import PlanScreen from "@/features/plan/components/plan-screen"
+import PlansScreen from "@/features/plans/components/plan-screen"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 }
 
 const Page = () => {
-  return <PlanScreen />
+  return <PlansScreen />
 }
 
 export default Page

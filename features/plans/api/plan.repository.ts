@@ -18,6 +18,21 @@ export function listPlans() {
   })
 }
 
+export function getPlanById(id: bigint) {
+  return prisma.plan.findUnique({
+    where: { id },
+    select: {
+      id: true,
+      title: true,
+      description: true,
+      day: true,
+      createdAt: true,
+      updatedAt: true,
+      items: true,
+    }
+  })
+}
+
 export function createPlan(input: CreatePlanInput) {
   return prisma.plan.create({
     data: {
