@@ -34,7 +34,10 @@ export function ImagePreview({ previewUrl, dropzone, isBusy }: ImagePreviewProps
               dropzone.open()
             }}
           >
-            <RefreshCw className="size-4" aria-hidden="true" />
+            <RefreshCw
+              className="size-4"
+              aria-hidden="true"
+            />
             Replace image
           </Button>
         </div>

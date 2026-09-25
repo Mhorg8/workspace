@@ -1,4 +1,4 @@
-import { AlignLeft, Braces, CheckCircle2, ShieldCheck } from "lucide-react";
+import { AlignLeft, Braces, CheckCircle2, ShieldCheck } from "lucide-react"
 
 export const highlights = [
   {
@@ -26,4 +26,3 @@ export const highlights = [
     tint: "bg-[#ede9fe] text-[#5b21b6]",
   },
 ]
-    

@@ -39,7 +39,10 @@ export function ImageGradientSourcePanel({
   removeColor,
 }: ImageGradientSourcePanelProps) {
   return (
-    <section id="image-gradient" className="input-panel-wrapper col-span-12 md:col-span-8">
+    <section
+      id="image-gradient"
+      className="input-panel-wrapper col-span-12 md:col-span-8"
+    >
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -right-16 -top-20 size-56 rounded-full bg-[#fb7185]/30 blur-3xl"
@@ -58,9 +61,18 @@ export function ImageGradientSourcePanel({
             </h2>
           </div>
           <div className="flex flex-wrap gap-2">
-            <FormatChip label="PNG" tone="rose" />
-            <FormatChip label="JPG" tone="blue" />
-            <FormatChip label="CSS" tone="violet" />
+            <FormatChip
+              label="PNG"
+              tone="rose"
+            />
+            <FormatChip
+              label="JPG"
+              tone="blue"
+            />
+            <FormatChip
+              label="CSS"
+              tone="violet"
+            />
           </div>
         </div>
 
@@ -69,19 +81,33 @@ export function ImageGradientSourcePanel({
         </p>
 
         {previewUrl ? (
-          <ImagePreview previewUrl={previewUrl} dropzone={dropzone} isBusy={isBusy} />
+          <ImagePreview
+            previewUrl={previewUrl}
+            dropzone={dropzone}
+            isBusy={isBusy}
+          />
         ) : (
-          <ImageDropzone dropzone={dropzone} isBusy={isBusy} />
+          <ImageDropzone
+            dropzone={dropzone}
+            isBusy={isBusy}
+          />
         )}
 
-        <ImageGradientPalette generated={generated} colors={colors} removeColor={removeColor} />
+        <ImageGradientPalette
+          generated={generated}
+          colors={colors}
+          removeColor={removeColor}
+        />
         <ImageGradientPreview
           label={previewLabel}
           colors={generated ? colors : []}
           kind={kind}
-         
         />
-        <ImageGradientCodePanel css={css} canCopy={canCopy} onCopy={onCopy} />
+        <ImageGradientCodePanel
+          css={css}
+          canCopy={canCopy}
+          onCopy={onCopy}
+        />
       </div>
     </section>
   )

@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button'
-import { Copy } from 'lucide-react'
-import { ColorFormatOption } from '../types'
+import { Button } from "@/components/ui/button"
+import { Copy } from "lucide-react"
+import { ColorFormatOption } from "../types"
 
 interface Props {
   selected: ColorFormatOption
@@ -22,7 +22,10 @@ const ColorConvertorSession = ({ selected }: Props) => {
         className="mt-5 h-12 w-full cursor-pointer rounded-full bg-white text-primary hover:bg-white/90 disabled:bg-white/70"
         disabled
       >
-        <Copy className="size-4" aria-hidden="true" />
+        <Copy
+          className="size-4"
+          aria-hidden="true"
+        />
         Copy {selected.label}
       </Button>
     </section>

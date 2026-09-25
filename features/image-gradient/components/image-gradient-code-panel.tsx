@@ -27,7 +27,10 @@ export function ImageGradientCodePanel({ css, canCopy, onCopy }: ImageGradientCo
           disabled={!canCopy}
           onClick={() => void onCopy()}
         >
-          <Copy className="size-4" aria-hidden="true" />
+          <Copy
+            className="size-4"
+            aria-hidden="true"
+          />
           Copy CSS
         </Button>
       </div>

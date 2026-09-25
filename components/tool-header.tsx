@@ -132,7 +132,10 @@ export function ToolHeader() {
           <span className="font-heading text-lg font-semibold tracking-tight">Tools</span>
         </Link>
 
-        <NavigationMenu align="end" className="max-w-none flex-none">
+        <NavigationMenu
+          align="end"
+          className="max-w-none flex-none"
+        >
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger
@@ -141,7 +144,10 @@ export function ToolHeader() {
                 Plan Tools
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <MenuLinks links={planerLinks} pathname={pathname} />
+                <MenuLinks
+                  links={planerLinks}
+                  pathname={pathname}
+                />
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
@@ -151,7 +157,10 @@ export function ToolHeader() {
                 Developer Tools
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <MenuLinks links={formatLinks} pathname={pathname} />
+                <MenuLinks
+                  links={formatLinks}
+                  pathname={pathname}
+                />
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
@@ -161,7 +170,10 @@ export function ToolHeader() {
                 Designer Tools
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <MenuLinks links={imageLinks} pathname={pathname} />
+                <MenuLinks
+                  links={imageLinks}
+                  pathname={pathname}
+                />
               </NavigationMenuContent>
             </NavigationMenuItem>
           </NavigationMenuList>

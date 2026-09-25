@@ -1,6 +1,4 @@
-export type FormatJsonResult =
-  | { ok: true; json: string }
-  | { ok: false; error: string }
+export type FormatJsonResult = { ok: true; json: string } | { ok: false; error: string }
 
 const JSON_INDENT = 2
 

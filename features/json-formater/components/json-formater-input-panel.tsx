@@ -28,7 +28,10 @@ export function JsonFormaterInputPanel({
   onJsonChange,
 }: JsonFormaterInputPanelProps) {
   return (
-    <section id="json-formater" className="input-panel-wrapper">
+    <section
+      id="json-formater"
+      className="input-panel-wrapper"
+    >
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -right-16 -top-20 size-56 rounded-full bg-[#fb7185]/30 blur-3xl"
@@ -47,13 +50,25 @@ export function JsonFormaterInputPanel({
             </h2>
           </div>
           <div className="flex flex-wrap gap-2">
-            <FormatChip label="JSON" tone="rose" />
-            <FormatChip label="Pretty" tone="blue" />
-            <FormatChip label="Valid" tone="violet" />
+            <FormatChip
+              label="JSON"
+              tone="rose"
+            />
+            <FormatChip
+              label="Pretty"
+              tone="blue"
+            />
+            <FormatChip
+              label="Valid"
+              tone="violet"
+            />
           </div>
         </div>
 
-        <label htmlFor={inputId} className="sr-only">
+        <label
+          htmlFor={inputId}
+          className="sr-only"
+        >
           JSON
         </label>
         <textarea
@@ -71,7 +86,10 @@ export function JsonFormaterInputPanel({
               : "border-border hover:border-primary focus-visible:border-primary",
           )}
         />
-        <p id={`${inputId}-help`} className="text-sm leading-6 text-muted-foreground">
+        <p
+          id={`${inputId}-help`}
+          className="text-sm leading-6 text-muted-foreground"
+        >
           Paste minified or messy JSON. The formatter parses it and prints the exact value.
         </p>
       </div>

@@ -25,7 +25,11 @@ export function JsonOutputPanel({ typeOutput, onCopy, onClear }: JsonOutputPanel
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button variant="ghost" className="cursor-pointer" onClick={onClear}>
+          <Button
+            variant="ghost"
+            className="cursor-pointer"
+            onClick={onClear}
+          >
             Clear
           </Button>
           <Button
@@ -33,7 +37,10 @@ export function JsonOutputPanel({ typeOutput, onCopy, onClear }: JsonOutputPanel
             className="h-11 cursor-pointer rounded-full px-4"
             onClick={() => void onCopy()}
           >
-            <Copy className="size-3.5" aria-hidden="true" />
+            <Copy
+              className="size-3.5"
+              aria-hidden="true"
+            />
             Copy type
           </Button>
         </div>

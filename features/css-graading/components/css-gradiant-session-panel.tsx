@@ -38,7 +38,10 @@ export function CssGradiantSessionPanel({
         disabled={!canCopy}
         onClick={() => void onCopy()}
       >
-        <Copy className="size-4" aria-hidden="true" />
+        <Copy
+          className="size-4"
+          aria-hidden="true"
+        />
         Copy CSS
       </Button>
     </section>

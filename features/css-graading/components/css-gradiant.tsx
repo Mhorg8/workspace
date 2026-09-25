@@ -24,7 +24,10 @@ function CssGradiantWorkspace() {
 
   return (
     <div className="grid gap-5 md:grid-cols-12">
-      <section id="css-gradiant" className="input-panel-wrapper col-span-12 md:col-span-8">
+      <section
+        id="css-gradiant"
+        className="input-panel-wrapper col-span-12 md:col-span-8"
+      >
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -right-16 -top-20 size-56 rounded-full bg-[#fb7185]/30 blur-3xl"
@@ -43,9 +46,18 @@ function CssGradiantWorkspace() {
               </h2>
             </div>
             <div className="flex flex-wrap gap-2">
-              <GradientChip label="CSS" tone="rose" />
-              <GradientChip label="Gradient" tone="blue" />
-              <GradientChip label="Preview" tone="violet" />
+              <GradientChip
+                label="CSS"
+                tone="rose"
+              />
+              <GradientChip
+                label="Gradient"
+                tone="blue"
+              />
+              <GradientChip
+                label="Preview"
+                tone="violet"
+              />
             </div>
           </div>
 
@@ -60,7 +72,10 @@ function CssGradiantWorkspace() {
             label={label}
           />
 
-          <CssGradiantTypeControl kind={gradient.kind} onKindChange={gradient.setKind} />
+          <CssGradiantTypeControl
+            kind={gradient.kind}
+            onKindChange={gradient.setKind}
+          />
 
           {gradient.usesAngle ? (
             <CssGradiantAngleControl
@@ -70,7 +85,10 @@ function CssGradiantWorkspace() {
             />
           ) : null}
 
-          <AddColorPanel colors={gradient.colors} setColors={gradient.setColors} />
+          <AddColorPanel
+            colors={gradient.colors}
+            setColors={gradient.setColors}
+          />
         </div>
       </section>
 

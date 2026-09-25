@@ -94,19 +94,31 @@ function QueueCard({
             onClick={onRemove}
           >
             {item.status === "converting" ? (
-              <Loader2 className="size-4 animate-spin" aria-hidden="true" />
+              <Loader2
+                className="size-4 animate-spin"
+                aria-hidden="true"
+              />
             ) : (
-              <X className="size-4" aria-hidden="true" />
+              <X
+                className="size-4"
+                aria-hidden="true"
+              />
             )}
           </Button>
         </div>
 
         <div className="mt-3 flex flex-wrap items-center gap-2">
           {item.status === "ready" ? (
-            <StatusPill icon={<Sparkles className="size-3.5" />} label="Ready" />
+            <StatusPill
+              icon={<Sparkles className="size-3.5" />}
+              label="Ready"
+            />
           ) : null}
           {item.status === "converting" ? (
-            <StatusPill icon={<Loader2 className="size-3.5 animate-spin" />} label="Converting" />
+            <StatusPill
+              icon={<Loader2 className="size-3.5 animate-spin" />}
+              label="Converting"
+            />
           ) : null}
           {item.status === "done" ? (
             <StatusPill
@@ -129,7 +141,10 @@ function QueueCard({
               className="ml-auto h-11 cursor-pointer rounded-full px-4"
               onClick={onDownload}
             >
-              <ArrowDownToLine className="size-3.5" aria-hidden="true" />
+              <ArrowDownToLine
+                className="size-3.5"
+                aria-hidden="true"
+              />
               Download
             </Button>
           ) : null}
@@ -174,13 +189,21 @@ export function ConverterQueue({
             {isBusy ? " · conversion in progress" : ""}
           </p>
         </div>
-        <Button variant="ghost" className="cursor-pointer" disabled={isBusy} onClick={onClearAll}>
+        <Button
+          variant="ghost"
+          className="cursor-pointer"
+          disabled={isBusy}
+          onClick={onClearAll}
+        >
           Clear all
         </Button>
       </div>
 
       {isBusy || overallProgress > 0 ? (
-        <Progress value={isBusy ? overallProgress : 100} className="mb-5">
+        <Progress
+          value={isBusy ? overallProgress : 100}
+          className="mb-5"
+        >
           <span className="sr-only">Conversion progress {overallProgress} percent</span>
         </Progress>
       ) : null}

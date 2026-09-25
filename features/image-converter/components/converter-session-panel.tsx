@@ -35,7 +35,10 @@ export function ConverterSessionPanel({
         disabled={readyCount === 0}
         onClick={onDownloadAll}
       >
-        <ArrowDownToLine className="size-4" aria-hidden="true" />
+        <ArrowDownToLine
+          className="size-4"
+          aria-hidden="true"
+        />
         Download all WebP
       </Button>
     </section>

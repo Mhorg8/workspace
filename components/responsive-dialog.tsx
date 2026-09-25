@@ -69,7 +69,10 @@ function Root({ children, ...props }: RootProps) {
   }
 
   return (
-    <Drawer {...props} modal={false}>
+    <Drawer
+      {...props}
+      modal={false}
+    >
       <ResponsiveDialogContext.Provider value={{ isDesktop }}>
         {children}
       </ResponsiveDialogContext.Provider>
@@ -82,14 +85,20 @@ function Trigger({ children, className, render }: TriggerProps) {
 
   if (isDesktop) {
     return (
-      <DialogTrigger className={className} render={render}>
+      <DialogTrigger
+        className={className}
+        render={render}
+      >
         {children}
       </DialogTrigger>
     )
   }
 
   return (
-    <DrawerTrigger className={className} render={render}>
+    <DrawerTrigger
+      className={className}
+      render={render}
+    >
       {children}
     </DrawerTrigger>
   )
@@ -150,14 +159,20 @@ function Close({ children, className, render }: TriggerProps) {
 
   if (isDesktop) {
     return (
-      <DialogClose className={cn(className, "cursor-pointer")} render={render}>
+      <DialogClose
+        className={cn(className, "cursor-pointer")}
+        render={render}
+      >
         {children}
       </DialogClose>
     )
   }
 
   return (
-    <DrawerClose className={className} render={render}>
+    <DrawerClose
+      className={className}
+      render={render}
+    >
       {children}
     </DrawerClose>
   )

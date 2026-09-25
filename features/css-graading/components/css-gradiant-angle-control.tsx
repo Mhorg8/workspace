@@ -15,10 +15,16 @@ export function CssGradiantAngleControl({
     <div className="grid gap-3 rounded-[1.6rem] border-2 border-border bg-background/80 p-4 sm:p-5">
       <div className="flex items-end justify-between gap-3">
         <div>
-          <label htmlFor={angleId} className="text-sm font-medium">
+          <label
+            htmlFor={angleId}
+            className="text-sm font-medium"
+          >
             Angle
           </label>
-          <p id={`${angleId}-help`} className="mt-1 text-xs leading-5 text-muted-foreground">
+          <p
+            id={`${angleId}-help`}
+            className="mt-1 text-xs leading-5 text-muted-foreground"
+          >
             Rotate the blend from 0° to 360°.
           </p>
         </div>

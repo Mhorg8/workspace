@@ -30,7 +30,10 @@ export function JsonFormaterSessionPanel({ status }: JsonFormaterSessionPanelPro
     >
       <p className="text-sm font-medium text-white/80">Session</p>
       <p className="font-heading mt-1 flex items-center gap-2 text-2xl font-semibold">
-        <Braces className="size-6" aria-hidden="true" />
+        <Braces
+          className="size-6"
+          aria-hidden="true"
+        />
         {copy.title}
       </p>
       <p className="mt-2 text-sm leading-6 text-white/85">{copy.body}</p>

@@ -29,7 +29,7 @@ export function getPlanById(id: bigint) {
       createdAt: true,
       updatedAt: true,
       items: true,
-    }
+    },
   })
 }
 

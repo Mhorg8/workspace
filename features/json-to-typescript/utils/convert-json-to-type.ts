@@ -1,8 +1,6 @@
 import { getType } from "./get-type"
 
-export type JsonToTypeResult =
-  | { ok: true; type: string }
-  | { ok: false; error: string }
+export type JsonToTypeResult = { ok: true; type: string } | { ok: false; error: string }
 
 export function convertJsonToType(json: string): JsonToTypeResult {
   try {

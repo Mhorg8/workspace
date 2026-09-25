@@ -16,7 +16,10 @@ function ImageConverterWorkspace() {
 
   return (
     <div className="grid gap-5 lg:grid-cols-12">
-      <ConverterDropZone dropzone={converter.dropzone} isBusy={converter.isBusy} />
+      <ConverterDropZone
+        dropzone={converter.dropzone}
+        isBusy={converter.isBusy}
+      />
 
       <aside className="flex flex-col gap-5 lg:col-span-4">
         <ConverterQualityPanel

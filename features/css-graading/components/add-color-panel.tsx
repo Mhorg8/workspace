@@ -62,7 +62,10 @@ export function AddColorPanel({ colors, setColors }: AddColorPanelProps) {
                 aria-label={`Remove ${stop}`}
                 onClick={() => handleRemoveColor(index)}
               >
-                <X className="size-4" aria-hidden="true" />
+                <X
+                  className="size-4"
+                  aria-hidden="true"
+                />
               </Button>
             </li>
           ))}
@@ -118,14 +121,21 @@ export function AddColorPanel({ colors, setColors }: AddColorPanelProps) {
                 error && "border-destructive focus-visible:border-destructive",
               )}
             />
-            <p id={`${hexId}-help`} className="text-xs leading-5 text-muted-foreground">
+            <p
+              id={`${hexId}-help`}
+              className="text-xs leading-5 text-muted-foreground"
+            >
               Use 6 digits, including the #.
             </p>
           </div>
         </div>
 
         {error ? (
-          <p id={`${hexId}-error`} role="alert" className="text-sm leading-6 text-destructive">
+          <p
+            id={`${hexId}-error`}
+            role="alert"
+            className="text-sm leading-6 text-destructive"
+          >
             {error}
           </p>
         ) : null}

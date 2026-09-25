@@ -17,7 +17,6 @@ import { startOfLocalDay } from "../utils/plan-day"
 import DayCalender from "./day-calender"
 import GetPlanInformation from "./get-plan-information"
 
-
 type CreatePlanDrawerProps = {
   hasPlans?: boolean
   onCreated?: () => void
@@ -57,9 +56,17 @@ const CreatePlanDrawer = ({ hasPlans = false, onCreated }: CreatePlanDrawerProps
   }
 
   return (
-    <ResponsiveDialog.Root open={open} onOpenChange={handleOpenChange}>
+    <ResponsiveDialog.Root
+      open={open}
+      onOpenChange={handleOpenChange}
+    >
       <ResponsiveDialog.Trigger
-        render={<Button variant="default" className="mt-4 h-11 min-h-11 cursor-pointer px-4" />}
+        render={
+          <Button
+            variant="default"
+            className="mt-4 h-11 min-h-11 cursor-pointer px-4"
+          />
+        }
       >
         {hasPlans ? "Create a plan" : "Create First Plan"}
       </ResponsiveDialog.Trigger>
@@ -73,7 +80,10 @@ const CreatePlanDrawer = ({ hasPlans = false, onCreated }: CreatePlanDrawerProps
               ? "Add a title and optional description first."
               : "Pick today or a later day for this plan."}
           </ResponsiveDialog.Description>
-          <p className="text-sm leading-5 text-muted-foreground" aria-live="polite">
+          <p
+            className="text-sm leading-5 text-muted-foreground"
+            aria-live="polite"
+          >
             Step {step} of 2
           </p>
         </ResponsiveDialog.Header>
@@ -92,18 +102,30 @@ const CreatePlanDrawer = ({ hasPlans = false, onCreated }: CreatePlanDrawerProps
           }}
         >
           {step === 1 ? (
-            <GetPlanInformation errors={errors} register={register} />
+            <GetPlanInformation
+              errors={errors}
+              register={register}
+            />
           ) : (
-            <DayCalender control={control} errors={errors} />
+            <DayCalender
+              control={control}
+              errors={errors}
+            />
           )}
 
           {savedTitle ? (
-            <p role="status" className="text-sm leading-5 text-foreground">
+            <p
+              role="status"
+              className="text-sm leading-5 text-foreground"
+            >
               Saved “{savedTitle}”. Add another day, or close this panel.
             </p>
           ) : null}
           {submitError ? (
-            <p role="alert" className="text-sm leading-5 text-destructive">
+            <p
+              role="alert"
+              className="text-sm leading-5 text-destructive"
+            >
               {submitError}
             </p>
           ) : null}
@@ -113,7 +135,11 @@ const CreatePlanDrawer = ({ hasPlans = false, onCreated }: CreatePlanDrawerProps
               <>
                 <ResponsiveDialog.Close
                   render={
-                    <Button type="button" variant="outline" className="h-11 min-h-11 cursor-pointer" />
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="h-11 min-h-11 cursor-pointer"
+                    />
                   }
                 >
                   Close
@@ -136,7 +162,11 @@ const CreatePlanDrawer = ({ hasPlans = false, onCreated }: CreatePlanDrawerProps
                 >
                   Back
                 </Button>
-                <Button type="submit" className="h-11 min-h-11 cursor-pointer" disabled={isSubmitting}>
+                <Button
+                  type="submit"
+                  className="h-11 min-h-11 cursor-pointer"
+                  disabled={isSubmitting}
+                >
                   {isSubmitting ? "Creating…" : "Create plan"}
                 </Button>
               </>

@@ -45,13 +45,25 @@ export function JsonInputPanel({ inputId, json, hasError, onJsonChange }: JsonIn
             </h2>
           </div>
           <div className="flex flex-wrap gap-2">
-            <FormatChip label="JSON" tone="rose" />
-            <FormatChip label="TypeScript" tone="blue" />
-            <FormatChip label="Types" tone="violet" />
+            <FormatChip
+              label="JSON"
+              tone="rose"
+            />
+            <FormatChip
+              label="TypeScript"
+              tone="blue"
+            />
+            <FormatChip
+              label="Types"
+              tone="violet"
+            />
           </div>
         </div>
 
-        <label htmlFor={inputId} className="sr-only">
+        <label
+          htmlFor={inputId}
+          className="sr-only"
+        >
           JSON
         </label>
         <textarea
@@ -69,7 +81,10 @@ export function JsonInputPanel({ inputId, json, hasError, onJsonChange }: JsonIn
               : "border-border hover:border-primary focus-visible:border-primary",
           )}
         />
-        <p id={`${inputId}-help`} className="text-sm leading-6 text-muted-foreground">
+        <p
+          id={`${inputId}-help`}
+          className="text-sm leading-6 text-muted-foreground"
+        >
           Paste an object or array. Nested keys and mixed arrays are inferred for you.
         </p>
       </div>

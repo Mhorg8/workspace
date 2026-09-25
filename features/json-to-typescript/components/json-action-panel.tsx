@@ -22,7 +22,10 @@ export function JsonActionPanel({ canConvert, error, errorId, onConvert }: JsonA
       </div>
 
       {error ? (
-        <p id={errorId} className="mb-4 text-sm leading-6 text-destructive">
+        <p
+          id={errorId}
+          className="mb-4 text-sm leading-6 text-destructive"
+        >
           {error}
         </p>
       ) : null}
@@ -33,7 +36,10 @@ export function JsonActionPanel({ canConvert, error, errorId, onConvert }: JsonA
         disabled={!canConvert}
         onClick={onConvert}
       >
-        <Sparkles className="size-4" aria-hidden="true" />
+        <Sparkles
+          className="size-4"
+          aria-hidden="true"
+        />
         Convert to TypeScript
       </Button>
     </section>

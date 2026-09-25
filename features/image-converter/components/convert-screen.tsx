@@ -41,7 +41,10 @@ export function ConvertScreen() {
         Skip to converter
       </a>
 
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
         <div className="blob-float-a absolute -left-24 top-10 size-80 rounded-full bg-[#fb7185]/80 blur-3xl" />
         <div className="blob-float-b absolute right-[-4rem] top-24 size-96 rounded-full bg-[#60a5fa]/75 blur-3xl" />
         <div className="blob-float-c absolute bottom-24 left-1/3 size-80 rounded-full bg-[#c084fc]/65 blur-3xl" />
@@ -77,7 +80,10 @@ export function ConvertScreen() {
               <span
                 className={`mb-4 inline-flex size-11 items-center justify-center rounded-2xl ${highlight.tint}`}
               >
-                <highlight.icon className="size-5" aria-hidden="true" />
+                <highlight.icon
+                  className="size-5"
+                  aria-hidden="true"
+                />
               </span>
               <h2 className="font-heading text-lg font-semibold">{highlight.title}</h2>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">{highlight.body}</p>

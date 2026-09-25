@@ -39,12 +39,19 @@ export function ImageGradientPreview({ label, colors, kind }: ImageGradientPrevi
           }}
         />
         {gradient ? (
-          <div aria-hidden="true" className="absolute inset-0" style={{ background: gradient }} />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0"
+            style={{ background: gradient }}
+          />
         ) : (
           <div className="relative flex h-full min-h-48 items-center justify-center px-6 text-center sm:min-h-56">
             <div className="rounded-[1.5rem] bg-card/95 px-5 py-4 shadow-sm ring-1 ring-border">
               <span className="mx-auto mb-3 inline-flex size-11 items-center justify-center rounded-2xl bg-muted text-primary">
-                <Blend className="size-5" aria-hidden="true" />
+                <Blend
+                  className="size-5"
+                  aria-hidden="true"
+                />
               </span>
               <p className="max-w-xs text-sm leading-6 text-foreground">
                 Upload a photo, pick a type, then generate to preview the CSS blend.

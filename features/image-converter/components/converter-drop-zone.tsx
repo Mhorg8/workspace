@@ -51,9 +51,18 @@ export function ConverterDropZone({ dropzone, isBusy }: ConverterDropZoneProps) 
             </h2>
           </div>
           <div className="flex flex-wrap gap-2">
-            <FormatChip label="PNG" tone="rose" />
-            <FormatChip label="SVG" tone="blue" />
-            <FormatChip label="WebP" tone="violet" />
+            <FormatChip
+              label="PNG"
+              tone="rose"
+            />
+            <FormatChip
+              label="SVG"
+              tone="blue"
+            />
+            <FormatChip
+              label="WebP"
+              tone="violet"
+            />
           </div>
         </div>
 
@@ -72,7 +81,10 @@ export function ConverterDropZone({ dropzone, isBusy }: ConverterDropZoneProps) 
         >
           <input {...getInputProps()} />
           <span className="flex size-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md shadow-primary/30">
-            <ImagePlus className="size-7" aria-hidden="true" />
+            <ImagePlus
+              className="size-7"
+              aria-hidden="true"
+            />
           </span>
           <div className="space-y-1">
             <p className="font-heading text-lg font-semibold">

@@ -110,13 +110,19 @@ function ToolLinkCard({ tool }: { tool: ToolCard }) {
           tool.tint,
         )}
       >
-        <tool.icon className="size-5" aria-hidden="true" />
+        <tool.icon
+          className="size-5"
+          aria-hidden="true"
+        />
       </span>
       <h3 className="font-heading text-lg font-semibold">{tool.title}</h3>
       <p className="mt-2 flex-1 text-sm leading-6 text-muted-foreground">{tool.description}</p>
       <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
         Open tool
-        <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+        <ArrowRight
+          className="size-4 transition-transform group-hover:translate-x-0.5"
+          aria-hidden="true"
+        />
       </span>
     </Link>
   )
@@ -146,12 +152,14 @@ export function HomeScreen() {
             </span>
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-            Format JSON, infer TypeScript types, turn PNG and SVG into WebP, and build CSS
-            gradients you can paste. Each tool opens on its own page and keeps the work in that
-            session.
+            Format JSON, infer TypeScript types, turn PNG and SVG into WebP, and build CSS gradients
+            you can paste. Each tool opens on its own page and keeps the work in that session.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href="#tools" className={cn(buttonVariants({ size: "lg" }), "h-12 px-5")}>
+            <Link
+              href="#tools"
+              className={cn(buttonVariants({ size: "lg" }), "h-12 px-5")}
+            >
               Browse tools
             </Link>
             <Link
@@ -163,9 +171,16 @@ export function HomeScreen() {
           </div>
         </section>
 
-        <div id="tools" className="flex scroll-mt-24 flex-col gap-14 lg:gap-16">
+        <div
+          id="tools"
+          className="flex scroll-mt-24 flex-col gap-14 lg:gap-16"
+        >
           {groups.map((group) => (
-            <section key={group.id} aria-labelledby={`${group.id}-heading`} className="flex flex-col gap-6">
+            <section
+              key={group.id}
+              aria-labelledby={`${group.id}-heading`}
+              className="flex flex-col gap-6"
+            >
               <div className="max-w-2xl">
                 <p className="text-sm font-medium text-primary">{group.eyebrow}</p>
                 <h2
@@ -183,16 +198,25 @@ export function HomeScreen() {
                 )}
               >
                 {group.tools.map((tool) => (
-                  <ToolLinkCard key={tool.href} tool={tool} />
+                  <ToolLinkCard
+                    key={tool.href}
+                    tool={tool}
+                  />
                 ))}
               </div>
             </section>
           ))}
 
-          <section aria-labelledby="plan-heading" className="flex flex-col gap-6">
+          <section
+            aria-labelledby="plan-heading"
+            className="flex flex-col gap-6"
+          >
             <div className="max-w-2xl">
               <p className="text-sm font-medium text-primary">Plan tools</p>
-              <h2 id="plan-heading" className="font-heading mt-2 text-3xl font-semibold tracking-tight">
+              <h2
+                id="plan-heading"
+                className="font-heading mt-2 text-3xl font-semibold tracking-tight"
+              >
                 Keep the day in one place
               </h2>
               <p className="mt-3 text-base leading-7 text-muted-foreground">

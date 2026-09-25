@@ -34,10 +34,18 @@ const PlansScreen = () => {
             Plan your Day with ease and get things done. It's simple and easy to use.
           </p>
 
-          <CreatePlanDrawer hasPlans={plans.length > 0} onCreated={() => void refresh()} />
+          <CreatePlanDrawer
+            hasPlans={plans.length > 0}
+            onCreated={() => void refresh()}
+          />
         </section>
 
-        <PlanList plans={plans} status={status} error={error} onRetry={() => void refresh()} />
+        <PlanList
+          plans={plans}
+          status={status}
+          error={error}
+          onRetry={() => void refresh()}
+        />
       </main>
     </div>
   )

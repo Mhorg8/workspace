@@ -26,10 +26,16 @@ export function ConverterQualityPanel({
   return (
     <section className="rounded-[2rem] bg-card p-5 shadow-lg ring-1 ring-foreground/5 sm:p-6">
       <div className="mb-4">
-        <label htmlFor={qualityId} className="font-heading text-lg font-semibold">
+        <label
+          htmlFor={qualityId}
+          className="font-heading text-lg font-semibold"
+        >
           WebP quality
         </label>
-        <p id={`${qualityId}-help`} className="mt-1 text-sm leading-6 text-muted-foreground">
+        <p
+          id={`${qualityId}-help`}
+          className="mt-1 text-sm leading-6 text-muted-foreground"
+        >
           Higher quality keeps more detail and a larger file.
         </p>
       </div>
@@ -63,9 +69,15 @@ export function ConverterQualityPanel({
         onClick={onConvert}
       >
         {isBusy ? (
-          <Loader2 className="size-4 animate-spin" aria-hidden="true" />
+          <Loader2
+            className="size-4 animate-spin"
+            aria-hidden="true"
+          />
         ) : (
-          <Sparkles className="size-4" aria-hidden="true" />
+          <Sparkles
+            className="size-4"
+            aria-hidden="true"
+          />
         )}
         {isBusy
           ? "Converting…"

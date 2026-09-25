@@ -47,7 +47,10 @@ export function JsonFormaterScreen() {
               <span
                 className={`mb-4 inline-flex size-11 items-center justify-center rounded-2xl ${highlight.tint}`}
               >
-                <highlight.icon className="size-5" aria-hidden="true" />
+                <highlight.icon
+                  className="size-5"
+                  aria-hidden="true"
+                />
               </span>
               <h2 className="font-heading text-lg font-semibold">{highlight.title}</h2>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">{highlight.body}</p>

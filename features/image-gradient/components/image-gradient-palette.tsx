@@ -41,7 +41,10 @@ export function ImageGradientPalette({
                 size="icon"
                 onClick={() => removeColor(stop)}
               >
-                <X className="size-4" aria-hidden="true" />
+                <X
+                  className="size-4"
+                  aria-hidden="true"
+                />
               </Button>
             </li>
           ))}

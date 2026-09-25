@@ -1,5 +1,5 @@
-import { Pipette } from 'lucide-react'
-import { ColorFormatOption } from '../types'
+import { Pipette } from "lucide-react"
+import { ColorFormatOption } from "../types"
 
 interface Props {
   sourceColor: string
@@ -7,7 +7,6 @@ interface Props {
 }
 
 const ColorPreview = ({ sourceColor, selected }: Props) => {
-
   const hasColor = Boolean(sourceColor.trim())
 
   return (
@@ -32,8 +31,7 @@ const ColorPreview = ({ sourceColor, selected }: Props) => {
           aria-hidden="true"
           className="absolute inset-0 opacity-50"
           style={{
-            backgroundImage:
-              "repeating-conic-gradient(var(--border) 0% 25%, var(--card) 0% 50%)",
+            backgroundImage: "repeating-conic-gradient(var(--border) 0% 25%, var(--card) 0% 50%)",
             backgroundSize: "1.25rem 1.25rem",
           }}
         />
@@ -48,7 +46,10 @@ const ColorPreview = ({ sourceColor, selected }: Props) => {
           <div className="relative flex h-full min-h-52 flex-col items-center justify-center gap-3 px-6 text-center sm:min-h-64">
             <div className="rounded-[1.5rem] bg-card/95 px-5 py-4 shadow-sm ring-1 ring-border">
               <span className="mx-auto mb-3 inline-flex size-11 items-center justify-center rounded-2xl bg-muted text-primary">
-                <Pipette className="size-5" aria-hidden="true" />
+                <Pipette
+                  className="size-5"
+                  aria-hidden="true"
+                />
               </span>
               <p className="max-w-xs text-sm leading-6 text-foreground">
                 Enter a color below to preview the converted value.

@@ -5,7 +5,14 @@ import { Toast as ToastPrimitive } from "@base-ui/react/toast"
 import { cn } from "cn"
 
 import { Button } from "@/components/ui/button"
-import { XIcon, CircleCheckIcon, InfoIcon, TriangleAlertIcon, OctagonXIcon, Loader2Icon } from "lucide-react"
+import {
+  XIcon,
+  CircleCheckIcon,
+  InfoIcon,
+  TriangleAlertIcon,
+  OctagonXIcon,
+  Loader2Icon,
+} from "lucide-react"
 
 const toast = ToastPrimitive.createToastManager()
 
@@ -14,7 +21,12 @@ function ToastProvider({ ...props }: ToastPrimitive.Provider.Props) {
 }
 
 function ToastPortal({ ...props }: ToastPrimitive.Portal.Props) {
-  return <ToastPrimitive.Portal data-slot="toast-portal" {...props} />
+  return (
+    <ToastPrimitive.Portal
+      data-slot="toast-portal"
+      {...props}
+    />
+  )
 }
 
 function ToastViewport({ className, ...props }: ToastPrimitive.Viewport.Props) {
@@ -23,7 +35,7 @@ function ToastViewport({ className, ...props }: ToastPrimitive.Viewport.Props) {
       data-slot="toast-viewport"
       className={cn(
         "pointer-events-none fixed inset-x-4 bottom-4 z-50 mx-auto w-auto max-w-sm outline-none sm:right-4 sm:left-auto sm:mx-0 sm:w-full",
-        className
+        className,
       )}
       {...props}
     />
@@ -50,7 +62,7 @@ function Toast({ className, ...props }: ToastPrimitive.Root.Props) {
         "data-expanded:data-ending-style:data-[swipe-direction=left]:[transform:translateX(calc(var(--toast-swipe-movement-x)-150%))_translateY(var(--offset-y))]",
         "data-expanded:data-ending-style:data-[swipe-direction=right]:[transform:translateX(calc(var(--toast-swipe-movement-x)+150%))_translateY(var(--offset-y))]",
         "data-expanded:data-ending-style:data-[swipe-direction=up]:[transform:translateY(calc(var(--toast-swipe-movement-y)-150%))]",
-        className
+        className,
       )}
       {...props}
     />
@@ -63,7 +75,7 @@ function ToastContent({ className, ...props }: ToastPrimitive.Content.Props) {
       data-slot="toast-content"
       className={cn(
         "flex h-full items-center gap-3 overflow-hidden p-4 transition-opacity duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] data-behind:opacity-0 data-expanded:opacity-100",
-        className
+        className,
       )}
       {...props}
     />
@@ -80,10 +92,7 @@ function ToastTitle({ className, ...props }: ToastPrimitive.Title.Props) {
   )
 }
 
-function ToastDescription({
-  className,
-  ...props
-}: ToastPrimitive.Description.Props) {
+function ToastDescription({ className, ...props }: ToastPrimitive.Description.Props) {
   return (
     <ToastPrimitive.Description
       data-slot="toast-description"
@@ -95,7 +104,12 @@ function ToastDescription({
 
 function ToastAction({
   className,
-  render = <Button variant="outline" size="sm" />,
+  render = (
+    <Button
+      variant="outline"
+      size="sm"
+    />
+  ),
   ...props
 }: ToastPrimitive.Action.Props) {
   return (
@@ -111,7 +125,12 @@ function ToastAction({
 function ToastClose({
   className,
   children,
-  render = <Button variant="ghost" size="icon-sm" />,
+  render = (
+    <Button
+      variant="ghost"
+      size="icon-sm"
+    />
+  ),
   ...props
 }: ToastPrimitive.Close.Props) {
   return (
@@ -121,13 +140,11 @@ function ToastClose({
       render={render}
       className={cn(
         "relative shrink-0 text-muted-foreground after:absolute after:-inset-2 after:content-[''] hover:text-foreground",
-        className
+        className,
       )}
       {...props}
     >
-      {children ?? (
-        <XIcon aria-hidden="true" />
-      )}
+      {children ?? <XIcon aria-hidden="true" />}
     </ToastPrimitive.Close>
   )
 }
@@ -136,32 +153,32 @@ function ToastIcon({ type }: { type: string | undefined }) {
   let icon: React.ReactNode = null
 
   if (type === "success") {
-    icon = (
-      <CircleCheckIcon aria-hidden="true" />
-    )
+    icon = <CircleCheckIcon aria-hidden="true" />
   }
 
   if (type === "info") {
-    icon = (
-      <InfoIcon aria-hidden="true" />
-    )
+    icon = <InfoIcon aria-hidden="true" />
   }
 
   if (type === "warning") {
-    icon = (
-      <TriangleAlertIcon aria-hidden="true" />
-    )
+    icon = <TriangleAlertIcon aria-hidden="true" />
   }
 
   if (type === "error") {
     icon = (
-      <OctagonXIcon className="text-destructive" aria-hidden="true" />
+      <OctagonXIcon
+        className="text-destructive"
+        aria-hidden="true"
+      />
     )
   }
 
   if (type === "loading") {
     icon = (
-      <Loader2Icon className="animate-spin" aria-hidden="true" />
+      <Loader2Icon
+        className="animate-spin"
+        aria-hidden="true"
+      />
     )
   }
 
@@ -183,7 +200,10 @@ function ToastList() {
   const { toasts } = ToastPrimitive.useToastManager()
 
   return toasts.map((toastItem) => (
-    <Toast key={toastItem.id} toast={toastItem}>
+    <Toast
+      key={toastItem.id}
+      toast={toastItem}
+    >
       <ToastContent>
         <ToastIcon type={toastItem.type} />
         <div className="flex min-w-0 flex-1 flex-col gap-1">
@@ -197,13 +217,12 @@ function ToastList() {
   ))
 }
 
-function Toaster({
-  children,
-  toastManager = toast,
-  ...props
-}: ToastPrimitive.Provider.Props) {
+function Toaster({ children, toastManager = toast, ...props }: ToastPrimitive.Provider.Props) {
   return (
-    <ToastProvider toastManager={toastManager} {...props}>
+    <ToastProvider
+      toastManager={toastManager}
+      {...props}
+    >
       {children}
       <ToastPortal>
         <ToastViewport>

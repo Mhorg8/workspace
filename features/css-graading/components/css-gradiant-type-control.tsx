@@ -54,8 +54,15 @@ export function CssGradiantTypeControl({ kind, onKindChange }: CssGradiantTypeCo
                   : "bg-background/80 text-foreground ring-border hover:ring-primary focus-within:ring-ring/40",
               )}
             >
-              <RadioGroupItem id={optionId} value={option.value} className="sr-only" />
-              <option.icon className="size-4 shrink-0" aria-hidden="true" />
+              <RadioGroupItem
+                id={optionId}
+                value={option.value}
+                className="sr-only"
+              />
+              <option.icon
+                className="size-4 shrink-0"
+                aria-hidden="true"
+              />
               <span className="min-w-0">
                 <span className="block text-sm font-semibold">{option.label}</span>
                 <span

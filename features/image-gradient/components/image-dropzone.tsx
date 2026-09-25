@@ -29,7 +29,10 @@ export function ImageDropzone({ dropzone, isBusy }: ImageDropzoneProps) {
     >
       <input {...getInputProps()} />
       <span className="flex size-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md shadow-primary/30">
-        <ImagePlus className="size-7" aria-hidden="true" />
+        <ImagePlus
+          className="size-7"
+          aria-hidden="true"
+        />
       </span>
       <div className="space-y-1">
         <p className="font-heading text-lg font-semibold">

@@ -27,7 +27,10 @@ export function JsonFormaterActionPanel({
       </div>
 
       {error ? (
-        <p id={errorId} className="mb-4 text-sm leading-6 text-destructive">
+        <p
+          id={errorId}
+          className="mb-4 text-sm leading-6 text-destructive"
+        >
           {error}
         </p>
       ) : null}
@@ -38,7 +41,10 @@ export function JsonFormaterActionPanel({
         disabled={!canFormat}
         onClick={onFormat}
       >
-        <Sparkles className="size-4" aria-hidden="true" />
+        <Sparkles
+          className="size-4"
+          aria-hidden="true"
+        />
         Parse and format
       </Button>
     </section>

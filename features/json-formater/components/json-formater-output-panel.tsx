@@ -29,7 +29,11 @@ export function JsonFormaterOutputPanel({
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button variant="ghost" className="cursor-pointer" onClick={onClear}>
+          <Button
+            variant="ghost"
+            className="cursor-pointer"
+            onClick={onClear}
+          >
             Clear
           </Button>
           <Button
@@ -37,7 +41,10 @@ export function JsonFormaterOutputPanel({
             className="h-11 cursor-pointer rounded-full px-4"
             onClick={() => void onCopy()}
           >
-            <Copy className="size-3.5" aria-hidden="true" />
+            <Copy
+              className="size-3.5"
+              aria-hidden="true"
+            />
             Copy JSON
           </Button>
         </div>
